@@ -1,14 +1,14 @@
 # Haskell_Project3
 ## Program 1: Reading and Processing a Configuration File with Monads and Custom Constructs
 
-ConfigError
+### ConfigError
 
 The ConfigError type is a custom error monad that is used to represent errors that may occur while processing the configuration. It has one constructor InvalidConfig that takes a String message describing the error.
 
 ```
 data ConfigError = InvalidConfig String
 ```
-ConfigM
+### ConfigM
 
 The ConfigM type is a type alias for the Either monad specialized to ConfigError and another type a. This allows us to handle errors that may occur while processing the configuration.
 
@@ -16,7 +16,7 @@ The ConfigM type is a type alias for the Either monad specialized to ConfigError
 type ConfigM a = Either ConfigError a
 ```
 
-Config
+### Config
 
 The Config type is a custom data type that represents the configuration values. It has three fields: serverName, serverPort, and maxConnections, all of which are of type String.
 
@@ -29,7 +29,7 @@ data Config = Config {
 }
 
 ```
-readConfig
+### readConfig
 
 The readConfig function takes a file path and returns a ConfigM Config value, representing a Config value that is either successfully parsed and validated, or an error that occurred while parsing or validating the configuration.
 
@@ -44,7 +44,7 @@ readConfig path = do
     validateConfig values
 ```
 
-parseConfig
+### parseConfig
 
 The parseConfig function takes a string representing the contents of a configuration file, and returns a list of key-value pairs representing the configuration values.
 
@@ -62,7 +62,7 @@ parseConfig = map parseLine . lines
 ```
 
 
-validateConfig
+### validateConfig
 
 The validateConfig function takes a list of key-value pairs representing the configuration values, and returns a ConfigM Config value representing a validated Config value, or an error that occurred while validating the configuration.
 
