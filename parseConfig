@@ -1,0 +1,9 @@
+-- Parse configuration values from string
+parseConfig :: String -> [(String, String)]
+parseConfig = map parseLine . lines
+  where
+    parseLine line =
+      let (key, val) = break (== '=') line
+      in (trim key, trim $ tail val)
+
+    trim = dropWhile isSpace . reverse . dropWhile isSpace . reverse
