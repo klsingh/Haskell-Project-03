@@ -1,5 +1,5 @@
-## Haskell_Project3
-# Reading and Processing a Configuration File with Monads and Custom Constructs
+# Haskell_Project3
+## Reading and Processing a Configuration File with Monads and Custom Constructs
 
 ConfigError
 
