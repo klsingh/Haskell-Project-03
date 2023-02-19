@@ -56,3 +56,11 @@ lookupValue :: String -> [(String, String)] -> ConfigM String
 lookupValue key values = case lookup key values of
     Just val -> return val
     Nothing -> throwError (InvalidConfig $ "Missing value for " ++ key)
+    
+{-
+ In this program, the readConfig function uses the Reader monad to read in a configuration file, and the validateConfig function uses a custom error monad ConfigM to handle errors that may occur while processing the configuration. 
+ The lookupValue function is a helper function that returns the value associated with a key in a list of key-value pairs.
+
+Note that this program is incomplete, as the parseConfig function is left undefined for brevity. 
+You would need to implement parseConfig to actually parse the configuration values from the file contents.
+-}
