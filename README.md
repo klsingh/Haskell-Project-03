@@ -1,44 +1,6 @@
 # Haskell_Project3
-## Reading and Processing a Configuration File with Monads and Custom Constructs
+## Program 1: Reading and Processing a Configuration File with Monads and Custom Constructs
 
-ConfigError
-
-The ConfigError type is a custom error monad that is used to represent errors that may occur while processing the configuration. It has one constructor InvalidConfig that takes a String message describing the error.
-
-```
-data ConfigError = InvalidConfig String
-```
-ConfigM
-
-The ConfigM type is a type alias for the Either monad specialized to ConfigError and another type a. This allows us to handle errors that may occur while processing the configuration.
-```
-type ConfigM a = Either ConfigError a
-```
-Config
-
-The Config type is a custom data type that represents the configuration values. It has three fields: serverName, serverPort, and maxConnections, all of which are of type String.
-```
-data Config = Config {
-    serverName :: String,
-    serverPort :: Int,
-    maxConnections :: Int
-}
-```
-readConfig
-
-The readConfig function takes a file path and returns a ConfigM Config value, representing a Config value that is either successfully parsed and validated, or an error that occurred while parsing or validating the configuration.
-
-The function uses the Reader monad to read the file contents, and then calls the parseConfig function to parse the configuration values from the file contents. It then calls the validateConfig function to validate the configuration values and convert them to the appropriate types.
-
-```
-readConfig :: FilePath -> ConfigM Config
-readConfig path = do
-    contents <- runReaderT (readFile path) ()
-    let values = parseConfig contents
-    validateConfig values
-```
-
-Program 1: Reading and Processing a Configuration File with Monads and Custom Constructs
 ConfigError
 
 The ConfigError type is a custom error monad that is used to represent errors that may occur while processing the configuration. It has one constructor InvalidConfig that takes a String message describing the error.
