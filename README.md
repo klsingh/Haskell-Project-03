@@ -1,4 +1,4 @@
-# Haskell_Project3
+# Haskell Project-03
 ## Program 1: Reading and Processing a Configuration File with Monads and Custom Constructs
 
 ### ConfigError
